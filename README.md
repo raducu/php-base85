@@ -65,12 +65,14 @@ Installation
 1. Download the source code
 2. Install php build environment (php-devel)
 3. Compile and install:
+
    ```
    $ phpize
    $ ./configure
    $ make install
    ```
 4. Optionally, you can run the tests:
+
    ```
    $ make test
    ```
