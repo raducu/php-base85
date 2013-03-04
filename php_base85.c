@@ -34,16 +34,16 @@
   zero byte sequences, so this form of encoding is less space-efficient than
   the ASCII85 version which compacts redundant zero byte sequences.
 
-  About base85 and this implementation
-  ------------------------------------
+  About base85 efficency
+  ----------------------
   Base-85 represents 4 bytes as 5 ASCII characters. This is a 7% improvement
   over base-64, which translates to a size increase of ~25% over plain
   binary data for base-85 versus that of ~37% for base-64.
   
   Functions
   ---------
-  string base85_encode(string $data)
-  string base85_decode(string $data)
+  string base85_encode(string $data) - encodes a string using base85
+  string base85_decode(string $data) - decodes a string encoded with base85
  */
 
 #ifdef HAVE_CONFIG_H
@@ -150,6 +150,7 @@ void encode_85(char *buffer, const unsigned char *data, int len)
     while (len) {
         unsigned acc = 0;
         int cnt;
+        /* Pack a 4-character block */
         for (cnt = 24; cnt >= 0; cnt -= 8) {
             unsigned ch = *data++;
             acc |= ch << cnt;
@@ -194,7 +195,7 @@ int decode_85(char *buffer, const char *data, int len)
                 return 1;
             }
             if (cnt) {
-                /* exept for the last char */
+                /* except for the last char */
                 acc = acc * 85 + de;
             }
         }
