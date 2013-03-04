@@ -65,16 +65,14 @@ Installation
 1. Download the source code
 2. Install php build environment (php-devel)
 3. Compile and install:
-
-```
-$ phpize
-$ ./configure
-$ make install
-```
+   ```
+   $ phpize
+   $ ./configure
+   $ make install
+   ```
 4. Optionally, you can run the tests:
-
-```
-$ make test
-```
+   ```
+   $ make test
+   ```
 5. Add the line `extension=base85.so` to your php.ini to trigger it to load on startup.
 
