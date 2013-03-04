@@ -11,9 +11,20 @@ encoding and decoding functions.
 Example
 -------
 ```php
-$encoded = base85_encode('The quick brown fox jumps over the lazy dog\n');
+$str = "The quick brown fox jumps over the lazy dog\n";
 
-$decoded = base85_decode($encoded);
+$enc = base85_encode($str);
+printf("base85-encoded: %s\n", $enc);
+
+$str = base85_decode($enc);
+printf("base85-decoded: %s", $str);
+```
+
+The above example will output:
+
+```
+base85-encoded: RA^-&adl~9Yan8BZ+C7WW^Z^PYISXJb0BYaWpW^NXk{R5VS0HWWN&8*
+base85-decoded: The quick brown fox jumps over the lazy dog
 ```
 
 Where should you use base85?
@@ -44,6 +55,6 @@ PHP Functions
 The extension provides two PHP functions:
 
 ```
-string base85_encode(string $data)
-string base85_decode(string $data)
+string base85_encode(string $data) - encodes data with base85
+string base85_decode(string $data) - decodes data encoded with base85
 ```
