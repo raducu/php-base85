@@ -206,7 +206,7 @@ int decode_85(char *buffer, const char *data, int len)
         }
         acc += de;
 
-        cnt = (len < 4) ? len : 4;
+        cnt = (len < 5) ? len : 4;
         len -= 5;
         do {
             acc = (acc << 8) | (acc >> 24);
@@ -214,5 +214,7 @@ int decode_85(char *buffer, const char *data, int len)
         } while (--cnt);
     }
 
+    *buffer = 0;
+    
     return 0;
 }
